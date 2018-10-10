@@ -1,0 +1,24 @@
+<?php
+
+  if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $company = $_POST['company'];
+    $message = $_POST['message'];
+    $file1 = $_FILES["file1"]["name"];
+    $file2 = $_FILES["file2"]["name"];
+    $file3 = $_FILES["file3"]["name"];
+    $file4 = $_FILES["file4"]["name"];
+    $file5 = $_FILES["file5"]["name"];
+
+    $mailTo = "zrowton1206@gmail.com";
+    $subject = "You have received a Message from a ".$name." on your site!"
+    $txt = $name.".\n\n".$email.".\n\n".$phone.".\n\n".$company.".\n\n".$file1.".\n\n";
+    $txt .= $file2.".\n\n".$file3.".\n\n".$file4.".\n\n".$file5.".\n\n".$message;
+
+    mail($mailTo, $subject, $txt);
+    header("Location: index.html?mailsend");
+  }
+
+?>
